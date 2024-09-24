@@ -1,18 +1,28 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #e9f1fb;
   margin: 0;
   padding: 0;
-  color: #333;
+  background-color: #f4f4f9;
 }
 
-.header {
-  background-color: #1e73e8;
+header {
+  background-color: #4a90e2;
   color: white;
-  padding: 20px;
-  text-align: left;
+  padding: 1em;
+  text-align: justify;
 }
 
-.header h1 {
+h1 {
   margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.task-form {
+  order: -1;
 }

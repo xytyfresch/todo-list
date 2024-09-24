@@ -1,59 +1,52 @@
 .task-board {
   display: flex;
-  justify-content: space-around;
-  padding: 20px;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 }
 
 .task-column {
   background-color: white;
-  padding: 20px;
+  width: 95%;
+  padding: 1em;
   border-radius: 8px;
-  width: 20%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .task-column h3 {
-  margin-top: 0;
-  font-size: 16px;
   text-align: center;
-}
-
-.task-column ul {
-  list-style: none;
-  padding: 0;
-}
-
-.task-column h3 {
-  background-color: #ccc;
-  padding: 5px;
+  padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  color: white;
   border-radius: 4px;
-  color: #333;
 }
 
 .backlog h3 {
-  background-color: #ccc;
-  padding: 5px;
-  border-radius: 4px;
-  color: #333;
+  background-color: #576e7c;
 }
 
 .inProgress h3 {
-  background-color: #a3c4ff;
-  padding: 5px;
-  border-radius: 4px;
-  color: #333;
+  background-color: #f39c12;
 }
 
 .done h3 {
-  background-color: #a8e6cf;
-  padding: 5px;
-  border-radius: 4px;
-  color: #333;
+  background-color: #2ecc71;
 }
 
 .trash h3 {
-  background-color: #ffcdd2;
-  padding: 5px;
-  border-radius: 4px;
-  color: #333;
+  background-color: #e74c3c;
+}
+
+@media (min-width: 768px) {
+  .task-board {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .task-column {
+    width: 23%;
+  }
 }
