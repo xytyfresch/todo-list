@@ -23,7 +23,6 @@
   padding: 0;
 }
 
-/* дефолтный стиль заголовка */
 .task-column h3 {
   background-color: #ccc;
   padding: 5px;
