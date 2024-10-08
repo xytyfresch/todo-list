@@ -10,8 +10,8 @@ const taskBoardContainer = document.querySelector(".task-board");
 
 const tasksModel = new TasksModel();
 const tasksBoardPresenter = new TasksBoardPresenter({
-  taskBoardContainer: taskBoardContainer,
-  tasksModel: tasksModel,
+  taskBoardContainer,
+  tasksModel,
 });
 
 render(new HeaderComponent(), bodyContainer, RenderPosition.AFTERBEGIN);
