@@ -1,4 +1,4 @@
-import { createElement } from "../framework/render.js";
+import { AbstractComponent } from "../framework/view/abstract-component.js";
 import { StatusLabel } from "../consts.js";
 
 function createTaskColumnComponentTemplate(status) {
@@ -9,26 +9,15 @@ function createTaskColumnComponentTemplate(status) {
           </div>`;
 }
 
-export default class TaskColumnComponent {
+export default class TaskColumnComponent extends AbstractComponent {
   status;
 
   constructor({ status }) {
+    super();
     this.status = status;
   }
 
-  getTemplate() {
+  get template() {
     return createTaskColumnComponentTemplate(this.status);
-  }
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-    return this.element;
-  }
-
-  removeElement() {
-    this.element = null;
   }
 }

@@ -34,7 +34,7 @@ export default class TasksBoardPresenter {
         const taskComponent = new TaskComponent({
           task: tasksInCurrentStatus[key],
         });
-        render(taskComponent, taskColumnComponent.getElement());
+        render(taskComponent, taskColumnComponent.element);
       }
     }
 
