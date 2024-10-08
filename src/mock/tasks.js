@@ -32,12 +32,12 @@ export const tasks = [
   {
     id: "7",
     title: "Задача 7",
-    status: "done",
+    status: "trash",
   },
   {
     id: "8",
     title: "Задача 8",
-    status: "done",
+    status: "inProgress",
   },
   {
     id: "9",

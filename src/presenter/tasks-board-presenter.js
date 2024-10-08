@@ -1,3 +1,4 @@
+import DragAndDropTaskComponent from "../view/drag-and-drop-task-component.js";
 import TaskColumnComponent from "../view/task-column-component.js";
 import TaskComponent from "../view/task-component.js";
 import ClearButtonComponent from "../view/clear-button-component.js";
@@ -24,9 +25,13 @@ export default class TasksBoardPresenter {
 
       render(taskColumnComponent, this.#taskBoardContainer);
 
-      Object.values(tasksInCurrentStatus).forEach((taskInCurrentStatus) => {
-        this.#renderTask(taskInCurrentStatus, taskColumnComponent.element);
-      });
+      if (tasksInCurrentStatus.length === 0) {
+        render(new DragAndDropTaskComponent(), taskColumnComponent.element);
+      } else {
+        Object.values(tasksInCurrentStatus).forEach((taskInCurrentStatus) => {
+          this.#renderTask(taskInCurrentStatus, taskColumnComponent.element);
+        });
+      }
     });
 
     this.makeClearButton();
