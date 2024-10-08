@@ -18,18 +18,17 @@ export default class TasksBoardPresenter {
     const tasks = [...this.#tasksModel.getTasks()];
 
     Object.values(Status).forEach((status) => {
-      const taskColumnComponent = new TaskColumnComponent({ status: status });
+      var taskColumnElement = this.#renderTasksColumn(status, this.#taskBoardContainer);
+
       const tasksInCurrentStatus = tasks.filter(
         (task) => task.status === status
       );
 
-      render(taskColumnComponent, this.#taskBoardContainer);
-
       if (tasksInCurrentStatus.length === 0) {
-        render(new DragAndDropTaskComponent(), taskColumnComponent.element);
+        render(new DragAndDropTaskComponent(), taskColumnElement);
       } else {
         Object.values(tasksInCurrentStatus).forEach((taskInCurrentStatus) => {
-          this.#renderTask(taskInCurrentStatus, taskColumnComponent.element);
+          this.#renderTask(taskInCurrentStatus, taskColumnElement);
         });
       }
     });
@@ -41,6 +40,14 @@ export default class TasksBoardPresenter {
     const taskComponent = new TaskComponent({ task });
 
     render(taskComponent, container);
+  }
+
+  #renderTasksColumn(status, container) {
+    const taskColumnComponent = new TaskColumnComponent({ status });
+
+    render(taskColumnComponent, container);
+
+    return taskColumnComponent.element;
   }
 
   makeClearButton() {
