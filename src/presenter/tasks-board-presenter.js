@@ -25,13 +25,17 @@ export default class TasksBoardPresenter {
       render(taskColumnComponent, this.#taskBoardContainer);
 
       Object.values(tasksInCurrentStatus).forEach((taskInCurrentStatus) => {
-        const taskComponent = new TaskComponent({ task: taskInCurrentStatus });
-
-        render(taskComponent, taskColumnComponent.element);
+        this.#renderTask(taskInCurrentStatus, taskColumnComponent.element);
       });
     });
 
     this.makeClearButton();
+  }
+
+  #renderTask(task, container) {
+    const taskComponent = new TaskComponent({ task });
+
+    render(taskComponent, container);
   }
 
   makeClearButton() {
