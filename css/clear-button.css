@@ -12,3 +12,10 @@
 .clear-button:hover {
   background-color: #c0392b;
 }
+
+.clear-button:disabled,
+button[disabled] {
+  cursor: not-allowed;
+  background-color: #baa4a4;
+  color: #666666;
+}

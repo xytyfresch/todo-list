@@ -50,8 +50,16 @@ export default class TasksBoardPresenter {
   }
 
   #makeClearButton() {
+    const tasksInStatusTrash = this.#tasksModel.getTasksByStatus(Status.TRASH);
+    const noTasks = tasksInStatusTrash.length === 0;
+
     const trashContainer = document.querySelector(`.${Status.TRASH}`);
-    render(new ClearButtonComponent(), trashContainer);
+    const clearButtonComponent = new ClearButtonComponent(
+      noTasks,
+      this.cleanTrash.bind(this)
+    );
+
+    render(clearButtonComponent, trashContainer);
   }
 
   createTask() {
@@ -63,5 +71,10 @@ export default class TasksBoardPresenter {
     this.#tasksModel.addTask(taskTitle);
 
     document.querySelector("#add-task").value = "";
+  }
+
+  cleanTrash() {
+    const tasksInStatusTrash = this.#tasksModel.getTasksByStatus(Status.TRASH);
+    this.#tasksModel.deleteTasks(tasksInStatusTrash);
   }
 }

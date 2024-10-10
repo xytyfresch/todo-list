@@ -27,6 +27,18 @@ export default class TasksModel {
     this._notifyObservers();
   }
 
+  deleteTasks(tasks) {
+    tasks.forEach((task) => {
+      this.#deleteTask(task);
+    });
+    this._notifyObservers();
+  }
+
+  #deleteTask(task) {
+    const index = this.#boardTasks.indexOf(task);
+    this.#boardTasks.splice(index, 1);
+  }
+
   addObserver(observer) {
     this.#observers.push(observer);
   }
