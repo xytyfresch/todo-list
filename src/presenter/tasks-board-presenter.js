@@ -42,11 +42,19 @@ export default class TasksBoardPresenter {
   }
 
   #renderTasksColumn(status, container) {
-    const taskColumnComponent = new TaskColumnComponent({ status });
+    const taskColumnComponent = new TaskColumnComponent({
+      status,
+      onTaskDrop: this.#handleTaskDrop.bind(this),
+    });
 
     render(taskColumnComponent, container);
 
     return taskColumnComponent.element;
+  }
+
+  #handleTaskDrop(taskId, newStatus) {
+    console.log(taskId, newStatus)
+    this.#tasksModel.updateTaskStatus(taskId, newStatus);
   }
 
   #makeClearButton() {
