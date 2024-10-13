@@ -52,8 +52,14 @@ export default class TasksBoardPresenter {
     return taskColumnComponent.element;
   }
 
-  #handleTaskDrop(taskId, newStatus) {
+  #handleTaskDrop(taskId, newStatus, position) {
     this.#tasksModel.updateTaskStatus(taskId, newStatus);
+
+    if (position) {
+      this.#tasksModel.moveTask(taskId, position);
+    } else {
+      this.#tasksModel.addTaskToEnd(taskId);
+    }
   }
 
   #makeClearButton() {

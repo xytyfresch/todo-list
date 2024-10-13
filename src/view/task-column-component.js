@@ -24,16 +24,21 @@ export default class TaskColumnComponent extends AbstractComponent {
 
   #setDropHandler(onTaskDrop) {
     const container = this.element;
+    let draggedOverTask = null;
 
     container.addEventListener("dragover", (event) => {
       event.preventDefault();
+
+      draggedOverTask = event.target.closest(".task-element");
     });
 
     container.addEventListener("drop", (event) => {
       event.preventDefault();
 
       const taskId = event.dataTransfer.getData("text/plain");
-      onTaskDrop(taskId, this.status);
+      const position = draggedOverTask ? draggedOverTask.dataset.taskId : null;
+
+      onTaskDrop(taskId, this.status, position);
     });
   }
 }

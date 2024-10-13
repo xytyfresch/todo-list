@@ -47,6 +47,19 @@ export default class TasksModel {
     }
   }
 
+  moveTask(taskId, targetTaskId) {
+    const taskIndex = this.tasks.findIndex((task) => task.id === taskId);
+    const targetIndex = this.tasks.findIndex(
+      (task) => task.id === targetTaskId
+    );
+
+    const [movedTask] = this.tasks.splice(taskIndex, 1);
+
+    this.tasks.splice(targetIndex, 0, movedTask);
+
+    this._notifyObservers();
+  }
+
   addObserver(observer) {
     this.#observers.push(observer);
   }
