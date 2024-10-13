@@ -41,8 +41,6 @@ export default class TasksModel {
 
   updateTaskStatus(taskId, newStatus) {
     const task = this.#boardTasks.find((task) => task.id === taskId);
-    console.log(this.#boardTasks);
-    console.log(task);
     if (task) {
       task.status = newStatus;
       this._notifyObservers();
